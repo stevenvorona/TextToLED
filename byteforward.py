@@ -12,7 +12,7 @@ for c in dispalyit:
     coords = getCharBytes(c)
     coordbits = coords
     for i in range (0,len(coords)):
-        coordbits[i] = '0.08b'.format(coords[i])
+        coordbits[i] = "{0:08b}".format(coords[i])
     cycleletter(coordbits)
 
 #illuminates an led once per 0.5 seconds
@@ -39,8 +39,12 @@ def cycleletter(coordbits):
 #Takes a 8-bit string and outputs to the RPI
 def pushOneBitString(bitstr):
     #bitstr is 8 concatenated bits
-    for i in range(0, 8):
-        GPIO.output(i+18, int(bitstr[i]))
+    for i in range(7, 1, -1):
+	if int(bitstr[i]) == 0:
+		GPIO.output(i+18, 0)
+	elif int(bitstr[i]) == 1:
+		GPIO.output(i+18, 1)
+        
     #waits 1 second before moving to the next LED
     time.sleep(1)
 
@@ -49,7 +53,7 @@ def pushOneBitString(bitstr):
 def coordToBitString(*argv):
   cordlist = { }
   for arg in argv:
-    cordlist.append(str('0.05b'.format(arg[0]))+""+str('0.03b'.format(arg[1])))
+    cordlist.append(str("{0:05b}".format(arg[0]))+str("{0:03b}".format(arg[1])))
   return cordlist
 '''
 
