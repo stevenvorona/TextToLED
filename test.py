@@ -34,16 +34,16 @@ dict = {
 }
 for ch in "ABCDEFGHIJKLMNOPQRSTUVWXYZ":
     coords = dict
-    for i in range(0,3):
-        for j in range(1, len(dict[ch])):
+    for i in range(1,3):
+        for j in range(0, len(dict[ch])):
             coords[ch].append(i + dict[ch][j])
 
-print coords
 printit = str(raw_input("What do you want to type")).upper()
+time.sleep(5)
 for ch in printit:
     print ch
-    for n in range(0, 1):
-        for i in
+    for n in range(0, 15):
+        for i in coords[ch]:
             bitstr=str("{0:08b}".format(i))
             print bitstr
             for j in range(7,-1,-1):
@@ -51,7 +51,9 @@ for ch in printit:
 		    GPIO.output(j+18, 0)
 	        elif int(bitstr[j]) == 1:
 		    GPIO.output(j+18, 1)
-            time.sleep(0.05)
+            time.sleep(0.002)
+
+    time.sleep(0.25)
 '''
 for i in range(0, 128):
     bitstr=str('0.08b'.format(i))
