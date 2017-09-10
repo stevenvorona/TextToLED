@@ -12,11 +12,12 @@ coords.append([0,0])
 coordbits = {}
 coordbits = coordToBitString(coords)
 
-
+n = 0
+lit = len(coordbits)
 while True:
-    lit = len(coordbits)
     try:
-        coor
+        pushOneBitString(coordbits[n])
+	n=n+1
 
 def pushOneBitString(bitstr):
     #bitstr is 8 concatenated bits
