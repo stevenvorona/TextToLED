@@ -14,7 +14,10 @@ def detect_text(path):
 
     response = client.text_detection(image=image)
     texts = response.text_annotations
-    return texts
+    descriptions = []
+    for text in texts:
+        descriptions.append(text.description)
+    return descriptions
 
 pygame.init()
 cameras = list_cameras()
