@@ -2,6 +2,8 @@ import pygame
 from pygame.locals import *
 import Image
 import pytesseract
+import serial
+import time
 
 def detect_text(path):
     pytesseract.pytesseract.tesseract_cmd = ''
@@ -40,6 +42,15 @@ def getCharBin(ch):
         return chars[ch]
     else:
         return ['00000', '00000', '00000', '00000', '00000']
+
+def binToCoord(lst):
+    coordinates = []
+    for i in range(5):
+        for j in range(5):
+            if(lst[i][j] == '1'):
+                coord = bin(5*i + j)[2:]
+                coordinates.append((5-len(coord))*'0' + coord + '000')
+    return coordinates
 
 pygame.init()
 cameras = list_cameras()
