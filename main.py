@@ -4,7 +4,7 @@ import Image
 import pytesseract
 import serial
 import time
-
+#aksljfdhlaskj
 def detect_text(path):
     pytesseract.pytesseract.tesseract_cmd = ''
     return pytesseract.image_to_string(Image.open(path))
