@@ -44,6 +44,7 @@ char dict for reference
 def getCharBytes(ch):
     #dict of hex strings of coords of 0th layer
     #2-dig coords
+    coords = []
     dict{
 	'A': '08101830405860688090a8b8',
 	'B': '00081028385058607888a0a8b0',
@@ -72,6 +73,14 @@ def getCharBytes(ch):
 	'Y': '002030406088b0',
 	'Z': '0008101820406080a0a8b0b8c0',
     }
+    if(ch in dict.keys()):
+        coord = dict[ch]
+        for i in range(5):
+            for j in range(0, len(coord), 2):
+                coords.append(int(coord[j:j+2], 16)+i)
+        return coords
+    else:
+        return []
 
 pygame.init()
 cameras = list_cameras()
