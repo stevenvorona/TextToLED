@@ -6,26 +6,34 @@ GPIO.setmode(GPIO.BCM)
 for i in range(0, 8):
     GPIO.setup(i, GPIO.OUT, initial=GPIO.LOW)
 
+dispalyit = (raw_input("Hey there, what word you wanna print?")).upper()
 #Takes in coords and converts to coordbits (a list of bits to forward to the FPGA)
-coords = {}
-#coords.append([0,0])
-coordbits = {}
-#coordbits = coordToBitString(coords)
-coords = getCharBytes('A')
-for i in range (0,len(coords)):
-    coordbits[i] = '0.08b'.format(coords[i])
 
-n = 0
-lit = len(coordbits)
-while True:
-    try:
-        pushOneBitString(coordbits[n])
-	    n=n+1
-    except:
-        print "Err"
-    if n == lit:
-        n = 0
-    time.sleep(0.5)
+for c in dispalyit:
+    coords = {}
+    coords = getCharBytes(c)
+    coordbits = coords
+    for i in range (0,len(coords)):
+        coordbits[i] = '0.08b'.format(coords[i])
+    cycleletter(coordbits)
+
+def cycleletter(coordbits):
+    n = 0
+    z = 0
+    lit = len(coordbits)
+    while True:
+        try:
+            pushOneBitString(coordbits[n])
+    	    n=n+1
+        except:
+            print "Err"
+        if n == lit:
+            n = 0
+            z = z + 1
+        if z == 2:
+            z = 0
+            break
+        time.sleep(0.5)
 
 #Takes a 8-bit string and outputs to the RPI
 def pushOneBitString(bitstr):
