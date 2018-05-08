@@ -1,6 +1,6 @@
 import RPi.GPIO as GPIO
 GPIO.setmode(GPIO.BCM)
-for i in range(0, 8):
+for i in range(18, 26):
     GPIO.setup(i, GPIO.OUT, initial=GPIO.LOW)
 
 for i in range(0, 8):
