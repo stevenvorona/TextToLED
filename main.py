@@ -81,6 +81,9 @@ def getCharBytes(ch):
         return coords
     else:
         return []
+        
+def boolString(bytes):
+    return list(map(lambda x : list(map(lambda y: y == '1', bin(x)[2:])), bytes))
 
 pygame.init()
 cameras = list_cameras()
