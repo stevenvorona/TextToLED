@@ -42,11 +42,13 @@ def pushOneBitString(bitstr):
         GPIO.output(i, int(bitstr[i]))
 
 #Input a list of lists in format (xlayer1, y1),(xlayer2, y2),...., (xlayern,yn)
+'''
 def coordToBitString(*argv):
   cordlist = { }
   for arg in argv:
     cordlist.append(str('0.05b'.format(arg[0]))+""+str('0.03b'.format(arg[1])))
   return cordlist
+'''
 
 def getCharBytes(ch):
     #dict of hex strings of coords of 0th layer
