@@ -1,14 +1,12 @@
 #Config
 import RPi.GPIO as GPIO
 GPIO.setmode(GPIO.BCM)
-
-#Configs all rpi outputs to low
 for i in range(0, 8):
     GPIO.setup(i, GPIO.OUT, initial=GPIO.LOW)
 
 dispalyit = (raw_input("Hey there, what word you wanna print?")).upper()
-#Takes in coords and converts to coordbits (a list of bits to forward to the FPGA)
 
+#turns each letter into a list of bit strings, then cycles through that list for each letter w/ cycleletter()
 for c in dispalyit:
     coords = {}
     coords = getCharBytes(c)
@@ -17,6 +15,7 @@ for c in dispalyit:
         coordbits[i] = '0.08b'.format(coords[i])
     cycleletter(coordbits)
 
+#illuminates an led once per 0.5 seconds
 def cycleletter(coordbits):
     n = 0
     z = 0
@@ -33,13 +32,17 @@ def cycleletter(coordbits):
         if z == 2:
             z = 0
             break
-        time.sleep(0.5)
+    #waits another second before ouputting another letter
+    time.sleep(1)
+
 
 #Takes a 8-bit string and outputs to the RPI
 def pushOneBitString(bitstr):
     #bitstr is 8 concatenated bits
     for i in range(0, 8):
-        GPIO.output(i, int(bitstr[i]))
+        GPIO.output(i+18, int(bitstr[i]))
+    #waits 1 second before moving to the next LED
+    time.sleep(1)
 
 #Input a list of lists in format (xlayer1, y1),(xlayer2, y2),...., (xlayern,yn)
 '''
