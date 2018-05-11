@@ -6,7 +6,7 @@ for i in range(18, 26):
 for i in range(0, 128):
     bitstr=str('0.08b'.format(i))
     for i in range(0, 8):
-        GPIO.output(i+18, int(bitstr[i]))
+        GPIO.output(i+18, bit(bitstr[i]))
     #waits 1 second before moving to the next LED
     time.sleep(1)
     for i in range(0, 8):

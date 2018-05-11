@@ -12,7 +12,7 @@ for c in dispalyit:
     coords = getCharBytes(c)
     coordbits = coords
     for i in range (0,len(coords)):
-        coordbits[i] = '0.08b'.format(coords[i])
+        coordbits[i] = "{0:08b}".format(coords[i])
     cycleletter(coordbits)
 
 #illuminates an led once per 0.5 seconds
@@ -49,7 +49,7 @@ def pushOneBitString(bitstr):
 def coordToBitString(*argv):
   cordlist = { }
   for arg in argv:
-    cordlist.append(str('0.05b'.format(arg[0]))+""+str('0.03b'.format(arg[1])))
+    cordlist.append(str("{0:05b}".format(arg[0]))+str("{0:03b}".format(arg[1])))
   return cordlist
 '''
 
