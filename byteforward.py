@@ -44,7 +44,7 @@ def pushOneBitString(bitstr):
 		GPIO.output(i+18, 0)
 	elif int(bitstr[i]) == 1:
 		GPIO.output(i+18, 1)
-        
+
     #waits 1 second before moving to the next LED
     time.sleep(1)
 

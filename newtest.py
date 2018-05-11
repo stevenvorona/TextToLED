@@ -8,4 +8,3 @@ for i in range(7,-1,-1):
 	GPIO.output(i+18, 1)
 	time.sleep(1)
 	GPIO.output(i+18,0)
-

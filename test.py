@@ -8,7 +8,7 @@ for i in range(18, 26):
 for i in range(0, 192, 8):
     bitstr=str("{0:08b}".format(i))
     print bitstr
-    
+
     for i in range(7,-1,-1):
 	if int(bitstr[i]) == 0:
 		GPIO.output(i+18, 0)
@@ -31,7 +31,7 @@ for i in range(0, 128):
     for i in range(0, 8):
         GPIO.output(i+18, 0)
 <<<<<<< HEAD
-    
+
 =======
 '''
 for i in range(0, 8):
