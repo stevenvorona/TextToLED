@@ -32,22 +32,18 @@ dict = {
     'Y': [0, 32, 48, 64, 96, 136, 176],
     'Z': [0, 8, 16, 24, 32, 64, 96, 128, 160, 168, 176, 184, 192]
 }
-def findletter(ch, dict):
-    for i in dict:
-        gay = dict[ch]
-        if(ch in dict.keys()):
-            gay = dict[ch]
-            print gay
-            for i in range(0,3):
-                for j in range(1, len(dict[ch])):
-                    gay.append(i + dict[ch][j])
+for ch in "ABCDEFGHIJKLMNOPQRSTUVWXYZ":
+    coords = dict
+    for i in range(0,3):
+        for j in range(1, len(dict[ch])):
+            coords[ch].append(i + dict[ch][j])
 
+print coords
 printit = str(raw_input("What do you want to type")).upper()
 for ch in printit:
     print ch
     for n in range(0, 1):
-        print findletter(ch, dict)
-        for i in findletter(ch, dict):
+        for i in
             bitstr=str("{0:08b}".format(i))
             print bitstr
             for j in range(7,-1,-1):
