@@ -58,7 +58,10 @@ for ch in printit:
 '''
 for ch in printit:
     coordslist = list(map(lambda x: [x], coords[ch]))
-    map(lambda y: y.append(y[0]+8*z for z in range(0,5)), coordslist)
+    for i in coordslist:
+        for x in range(1,5):
+            i.append(i[0]+8*x)
+    print coordslist
 '''
     for j in range(7,-1,-1):
         if int(bitstr[j]) == 0:
