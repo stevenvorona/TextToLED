@@ -1,8 +1,8 @@
 import time
-import RPi.GPIO as GPIO
-GPIO.setmode(GPIO.BCM)
-for i in range(18, 26):
-    GPIO.setup(i, GPIO.OUT, initial=GPIO.LOW)
+#import RPi.GPIO as GPIO
+#GPIO.setmode(GPIO.BCM)
+#for i in range(18, 26):
+#    GPIO.setup(i, GPIO.OUT, initial=GPIO.LOW)
 
 dict = {
     'A': [8, 16, 24, 48, 64, 88, 96, 104, 128, 144, 168, 184],
@@ -39,7 +39,8 @@ for ch in "ABCDEFGHIJKLMNOPQRSTUVWXYZ":
             coords[ch].append(i + dict[ch][j])
 
 printit = str(raw_input("What do you want to type")).upper()
-time.sleep(5)
+#time.sleep()
+'''
 for ch in printit:
     print ch
     for n in range(0, 15):
@@ -48,27 +49,21 @@ for ch in printit:
             print bitstr
             for j in range(7,-1,-1):
        	        if int(bitstr[j]) == 0:
-		    GPIO.output(j+18, 0)
-	        elif int(bitstr[j]) == 1:
-		    GPIO.output(j+18, 1)
-            time.sleep(0.002)
+		            GPIO.output(j+18, 0)
+	            elif int(bitstr[j]) == 1:
+		            GPIO.output(j+18, 1)
+                time.sleep(0.002)
 
     time.sleep(0.25)
 '''
-for i in range(0, 128):
-    bitstr=str('0.08b'.format(i))
-    for i in range(0, 8):
-        GPIO.output(i+18, bit(bitstr[i]))
-
-        GPIO.output(i+18, int(bitstr[i]))
-    #waits 1 second before moving to the next LED
-    time.sleep(1)
-    for i in range(0, 8):
-        GPIO.output(i+18, 0)
+for ch in printit:
+    coordslist = list(map(lambda x: [x], coords[ch]))
+    map(lambda y: y.append(y[0]+8*z for z in range(0,5)), coordslist)
 '''
-'''
-for i in range(0, 8):
-    GPIO.output(i+18, 1)
-    time.sleep(2)
-    GPIO.output(i+18, 0)
+    for j in range(7,-1,-1):
+        if int(bitstr[j]) == 0:
+            GPIO.output(j+18, 0)
+        elif int(bitstr[j]) == 1:
+            GPIO.output(j+18, 1)
+        time.sleep(0.002)
 '''
