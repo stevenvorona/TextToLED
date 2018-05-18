@@ -19,7 +19,9 @@ def display():
 while(True):
     for i in snake:
         i[0] += i[1]    #snake part moves in it direction
+    newdir = 0
+    for i in range(1, len(snake)):
+        
     for i in range(6):
         if GPIO.input(pins[i]) and not i== directions.index(direction):
             snake[0][1] = directions[i]
-    
